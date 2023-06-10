@@ -24,35 +24,26 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.compose.rememberNavController
 import com.example.diafacto.ui.theme.DiaFactoTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+
+import com.example.diafacto.Navigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            DiaFactoTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    SetMainActivityView("Android")
-                }
-                val systemUiController = rememberSystemUiController()
-                SideEffect {
-                    systemUiController.setSystemBarsColor(color = Color(red = 56, green = 80, blue = 97))
-//                    systemUiController.isStatusBarVisible = false
-                }
-            }
-
+            com.example.diafacto.Navigation()
         }
     }
 }
 
 
 @Composable
-fun SetMainActivityView(name: String, modifier: Modifier = Modifier) {
+fun MainScreen(modifier: Modifier = Modifier, navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -78,6 +69,21 @@ fun SetMainActivityView(name: String, modifier: Modifier = Modifier) {
         Box(
             modifier = Modifier
                 .size(150.dp)
+                .align(Alignment.BottomCenter)
+                .padding(start = 25.dp, bottom = 50.dp)
+                .clickable {
+                    navController.navigate(Screen.SelectionScreen.route)
+                }
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.selection_icon),
+                contentDescription = null,
+                modifier = modifier
+            )
+        }
+        Box(
+            modifier = Modifier
+                .size(150.dp)
                 .align(Alignment.BottomStart)
                 .padding(start = 50.dp, bottom = 50.dp)
         ) {
@@ -87,26 +93,14 @@ fun SetMainActivityView(name: String, modifier: Modifier = Modifier) {
                 modifier = Modifier.fillMaxSize()
             )
         }
-        Box(
-            modifier = Modifier
-                .size(150.dp)
-                .align(Alignment.BottomCenter)
-                .padding(start = 25.dp, bottom = 50.dp)
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.selection_icon),
-                contentDescription = null,
-                modifier = modifier
-            )
-        }
     }
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DiaFactoTheme {
-        SetMainActivityView("Android")
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun GreetingPreview() {
+//    DiaFactoTheme {
+//        MainScreen()
+//    }
+//}
