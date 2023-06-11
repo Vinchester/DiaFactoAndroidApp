@@ -1,9 +1,11 @@
 package com.example.diafacto
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+
 
 @Composable
 fun Navigation() {
@@ -15,7 +17,17 @@ fun Navigation() {
         composable(
             route = Screen.SelectionScreen.route
         ) { entry ->
-            SelectionScreen()
+            SelectionScreen(navController = navController)
+        }
+        composable(
+            route = Screen.SettingsScreen.route
+        ) { entry ->
+            SettingsScreen(navController = navController)
+        }
+        composable(
+            route = Screen.MainScreen.route
+        ) { entry ->
+            MainScreen(navController = navController)
         }
     }
 }
