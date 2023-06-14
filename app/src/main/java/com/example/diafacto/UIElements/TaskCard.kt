@@ -1,4 +1,4 @@
-package com.example.diafacto
+package com.example.diafacto.UIElements
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.diafacto.ui.theme.gelasio
@@ -68,7 +69,7 @@ fun taskCard(subject: String, theme: String, link: String): @Composable () -> Un
                     modifier = Modifier
                         .graphicsLayer {
                             translationX = 30.dp.toPx()
-                            translationY = 150.dp.toPx()
+                            translationY = 130.dp.toPx()
                         }
                 )
                 Text(
@@ -78,7 +79,7 @@ fun taskCard(subject: String, theme: String, link: String): @Composable () -> Un
                     modifier = Modifier
                         .graphicsLayer {
                             translationX = 30.dp.toPx()
-                            translationY = 170.dp.toPx()
+                            translationY = 150.dp.toPx()
                         }
                 )
                 Text(
@@ -88,7 +89,7 @@ fun taskCard(subject: String, theme: String, link: String): @Composable () -> Un
                     modifier = Modifier
                         .graphicsLayer {
                             translationX = 30.dp.toPx()
-                            translationY = 250.dp.toPx()
+                            translationY = 230.dp.toPx()
                         }
                 )
                 Text(
@@ -98,10 +99,76 @@ fun taskCard(subject: String, theme: String, link: String): @Composable () -> Un
                     modifier = Modifier
                         .graphicsLayer {
                             translationX = 30.dp.toPx()
-                            translationY = 270.dp.toPx()
+                            translationY = 250.dp.toPx()
+                        }
+                )
+                Text(
+                    text = "Start date:",
+                    fontSize = 20.sp,
+                    fontFamily = gelasio,
+                    modifier = Modifier
+                        .graphicsLayer {
+                            translationX = 30.dp.toPx()
+                            translationY = 340.dp.toPx()
+                        }
+                )
+                Text(
+                    text = "22 june",
+                    fontSize = 26.sp,
+                    fontFamily = gelasio,
+                    modifier = Modifier
+                        .graphicsLayer {
+                            translationX = 30.dp.toPx()
+                            translationY = 360.dp.toPx()
+                        }
+                )
+                Text(
+                    text = "Deadline:",
+                    fontSize = 20.sp,
+                    fontFamily = gelasio,
+                    modifier = Modifier
+                        .graphicsLayer {
+                            translationX = 30.dp.toPx()
+                            translationY = 400.dp.toPx()
+                        }
+                )
+                Text(
+                    text = "26 june",
+                    fontSize = 26.sp,
+                    fontFamily = gelasio,
+                    modifier = Modifier
+                        .graphicsLayer {
+                            translationX = 30.dp.toPx()
+                            translationY = 420.dp.toPx()
+                        }
+                )
+                Text(
+                    text = "Done:",
+                    fontSize = 20.sp,
+                    fontFamily = gelasio,
+                    modifier = Modifier
+                        .graphicsLayer {
+                            translationX = 230.dp.toPx()
+                            translationY = 400.dp.toPx()
+                        }
+                )
+                Text(
+                    text = "6/9",
+                    fontSize = 26.sp,
+                    fontFamily = gelasio,
+                    modifier = Modifier
+                        .graphicsLayer {
+                            translationX = 230.dp.toPx()
+                            translationY = 420.dp.toPx()
                         }
                 )
             }
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TaskCardPreview() {
+    taskCard(subject = "Programming", theme = "Matrix", link = "https://classroom/..")()
 }

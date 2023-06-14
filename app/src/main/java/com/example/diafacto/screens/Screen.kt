@@ -1,4 +1,4 @@
-package com.example.diafacto
+package com.example.diafacto.screens
 
 sealed class Screen(val route: String) {
     object MainScreen: Screen("main_screen")

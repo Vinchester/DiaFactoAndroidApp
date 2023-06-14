@@ -1,4 +1,4 @@
-package com.example.diafacto
+package com.example.diafacto.UIElements
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -16,6 +16,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.diafacto.R
+import com.example.diafacto.screens.Screen
 
 @Composable
 fun BottomBar(

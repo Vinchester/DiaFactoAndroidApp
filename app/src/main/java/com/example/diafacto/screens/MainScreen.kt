@@ -1,4 +1,4 @@
-package com.example.diafacto
+package com.example.diafacto.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -16,6 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.diafacto.UIElements.BottomBar
+import com.example.diafacto.UIElements.taskCard
 import com.example.diafacto.ui.theme.background_white
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
