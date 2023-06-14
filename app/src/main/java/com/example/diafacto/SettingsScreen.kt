@@ -2,6 +2,7 @@ package com.example.diafacto
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,78 +26,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.example.diafacto.ui.theme.background_white
 
 @Composable
 fun SettingsScreen(modifier: Modifier = Modifier, navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF253541))
+            .background(background_white)
             .clip(RoundedCornerShape(30.dp))
-            .paint(
-                painterResource(id = R.drawable.main_activity_background),
-                contentScale = ContentScale.FillBounds
-            )
     ){
-        Box(
-            modifier = Modifier
-                .size(150.dp)
-                .align(Alignment.BottomEnd)
-                .padding(end = 50.dp, bottom = 50.dp)
-            ) {
-        Image(
-            painter = painterResource(id = R.drawable.calendar_icon),
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize()
-        )
-        }
-        Box(
-            modifier = Modifier
-                .size(150.dp)
-                .align(Alignment.BottomCenter)
-                .padding(start = 25.dp, bottom = 50.dp)
-                .clickable {
-                    navController.navigate(Screen.SelectionScreen.route)
-                }
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.selection_icon),
-                contentDescription = null,
-                modifier = modifier
-            )
-        }
-        Box(
-            modifier = Modifier
-                .size(150.dp)
-                .align(Alignment.BottomStart)
-                .padding(start = 50.dp, bottom = 50.dp)
-                .clickable {
-                    navController.navigate(Screen.MainScreen.route)
-                }
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.home_screen),
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize()
-            )
-        }
-
-    }
-    Row(
-        modifier = Modifier
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceEvenly
-    ) {
-        Box() {
-            Text(
-                text = "SETTINGS",
-                fontSize = 30.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = Color.White,
-                modifier = Modifier
-                    .padding(top = 15.dp)
-            )
-        }
+        BottomBar(navController = navController, settingsButtonRoute = Screen.MainScreen.route)
     }
 
 
@@ -109,8 +53,13 @@ fun SettingsScreen(modifier: Modifier = Modifier, navController: NavController) 
                 painter = painterResource(id = PATH_TO_PHOTO),
                 contentDescription = null,
                 modifier = Modifier
-                    .padding(top = 100.dp)
+                    .graphicsLayer {
+                        translationY = 100.dp.toPx()
+                    }
+                    .size(150.dp)
+//                    .padding(top = 100.dp)
                     .clip(RoundedCornerShape(150.dp))
+                    .border(width = 2.dp, color = Color.Black, shape = CircleShape)
 
             )
         }
@@ -132,8 +81,8 @@ fun SettingsScreen(modifier: Modifier = Modifier, navController: NavController) 
 
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun SettingsPreview() {
-//    SettingsScreen()
-//}
+@Preview(showBackground = true)
+@Composable
+fun SettingsPreview() {
+    SettingsScreen(navController = rememberNavController())
+}
